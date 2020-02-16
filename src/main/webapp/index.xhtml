@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head>
+    <title>Title</title>
+</h:head>
+<h:body>
+    <h2>Movies:</h2>
+    <ol>
+        <ui:repeat value="#{movies.allMovies}" var="movie">
+            <li>#{movie.name}</li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{movies.movieToCreate.name}" required="true" />
+        <h:commandButton value = "Add new movie" action="#{movies.createMovie}" />
+    </h:form>
+</h:body>
+</html>
