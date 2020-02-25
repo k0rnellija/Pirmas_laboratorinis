@@ -22,6 +22,9 @@ public class Movie implements Serializable {
     @Column(name = "NAME")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="CATEGORY_ID")
+    private Category category;
 
     public Movie(){
 
