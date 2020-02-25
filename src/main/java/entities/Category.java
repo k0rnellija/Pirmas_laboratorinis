@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,8 +29,8 @@ public class Category {
 
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    private List<Movie> movies;
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    private List<Movie> movies = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
