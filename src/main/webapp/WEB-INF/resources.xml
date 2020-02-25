@@ -4,7 +4,7 @@
     <!-- see http://tomee.apache.org/datasource-config.html -->
 
     <!-- H2 Database -->
-    <Resource id="BooksDataSource" type="DataSource">
+    <Resource id="MovieDataSource" type="DataSource">
         JdbcDriver = org.h2.Driver
         JdbcUrl = jdbc:h2:~/h2database/MovieDB;AUTO_SERVER=TRUE;
         UserName = as
