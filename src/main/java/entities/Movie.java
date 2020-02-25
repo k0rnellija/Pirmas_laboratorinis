@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
         @NamedQuery(name = "Movie.findAll", query = "select a from Movie as a")
 })
-@Table(name = "Movie")
+@Table(name = "MOVIE")
 public class Movie implements Serializable {
 
     @Id

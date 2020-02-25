@@ -20,7 +20,7 @@ public class MoviesDAO {
         this.em = em;
     }
 
-    public void persist(Movie movie){
+    public void persist(Movie movie) {
         this.em.persist(movie);
     }
 }

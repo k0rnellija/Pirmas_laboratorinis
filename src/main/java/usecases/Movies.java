@@ -20,30 +20,31 @@ public class Movies implements Serializable {
     private Movie movieToCreate = new Movie();
 
     private List<Movie> allMovies;
+
     @PostConstruct
-    public void init(){
+    public void init() {
         loadMovies();
     }
 
-    public void loadMovies(){
+    public void loadMovies() {
         this.allMovies = moviesDAO.loadAll();
     }
 
-    public List<Movie> getAllMovies(){
+    public List<Movie> getAllMovies() {
         return allMovies;
     }
 
     @Transactional
-    public String createMovie(){
+    public String createMovie() {
         this.moviesDAO.persist(movieToCreate);
         return "success";
     }
 
-    public Movie getMovieToCreate(){
+    public Movie getMovieToCreate() {
         return movieToCreate;
     }
 
-    public void setMovieToCreate(Movie movieToCreate){
+    public void setMovieToCreate(Movie movieToCreate) {
         this.movieToCreate = movieToCreate;
     }
 }
