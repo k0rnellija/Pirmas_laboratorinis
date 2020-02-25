@@ -1,14 +1,21 @@
 package entities;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 
 @Entity
-@Table(name = "CATEGORY")
+@NamedQueries({
+        @NamedQuery(name = "Category.findAll", query = "select c from Category as c")
+})
 
+@Table(name = "CATEGORY")
+@Getter @Setter
 
 public class Category {
     public Category() {
@@ -17,36 +24,12 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     private String name;
 
     @OneToMany(mappedBy = "category")
     private List<Movie> movies;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String Id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String Name) {
-        this.name = name;
-    }
-
-    public List<Movie> getMovies(){
-        return movies;
-    }
-
-    public void setMovies (List<Movie> movies){
-        this.movies = movies;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -9,15 +9,15 @@
     <title>Title</title>
 </h:head>
 <h:body>
-    <h2>Movies:</h2>
+    <h2>Categories:</h2>
     <ol>
-        <ui:repeat value="#{movies.allMovies}" var="movie">
-            <li>#{movie.name}</li>
+        <ui:repeat value="#{categories.allCategories}" var="category">
+            <li><h:link value="#{category.name}" outcome="movies?categoryId=#{category.id}" /> </li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{movies.movieToCreate.name}" required="true" />
-        <h:commandButton value = "Add a new movie" action="#{movies.createMovie}" />
+        <h:inputText value="#{categories.categoryToCreate.name}" required="true" />
+        <h:commandButton value = "Add a new category" action="#{categories.createCategory}" />
     </h:form>
 </h:body>
 </html>
