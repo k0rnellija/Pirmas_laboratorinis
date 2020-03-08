@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,8 @@ import java.util.Objects;
 })
 
 @Table(name = "PRODUCER")
-@Getter @Setter
+@Getter
+@Setter
 
 public class Producer {
     public Producer() {
@@ -27,6 +29,8 @@ public class Producer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Size(max = 30)
+    @Column(name = "NAME")
     private String name;
 
     @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER)
@@ -35,13 +39,13 @@ public class Producer {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() !=o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Producer producer = (Producer) o;
         return Objects.equals(name, producer.name);
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return Objects.hash(name);
     }
 

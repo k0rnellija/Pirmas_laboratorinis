@@ -12,6 +12,8 @@ public class MoviesDAO {
     @PersistenceContext
     private EntityManager em;
 
+    public void create(Movie movie) { em.persist(movie);}
+
     public void persist(Movie movie) {
         this.em.persist(movie);
     }
