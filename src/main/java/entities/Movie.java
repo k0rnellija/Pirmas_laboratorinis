@@ -1,6 +1,5 @@
 package entities;
 
-import com.sun.org.apache.regexp.internal.RE;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +24,14 @@ public class Movie implements Serializable {
     @Column(name = "NAME")
     private String name;
 
+    @Size(max = 15)
+    @Column(name = "YEAR")
+    private String year;
+
+
     @ManyToOne
-    @JoinColumn(name="CATEGORY_ID")
-    private Category category;
+    @JoinColumn(name="PRODUCER_ID")
+    private Producer producer;
 
     public Movie(){
 

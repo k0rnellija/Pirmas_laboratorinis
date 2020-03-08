@@ -12,14 +12,14 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Category.findAll", query = "select c from Category as c")
+        @NamedQuery(name = "Producer.findAll", query = "select p from Producer as p")
 })
 
-@Table(name = "CATEGORY")
+@Table(name = "PRODUCER")
 @Getter @Setter
 
-public class Category {
-    public Category() {
+public class Producer {
+    public Producer() {
 
     }
 
@@ -29,15 +29,15 @@ public class Category {
 
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER)
     private List<Movie> movies = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() !=o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(name, category.name);
+        Producer producer = (Producer) o;
+        return Objects.equals(name, producer.name);
     }
 
     @Override

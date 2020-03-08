@@ -1,10 +1,10 @@
 package usecases;
 
-import entities.Category;
+import entities.Producer;
 import entities.Movie;
 import lombok.Getter;
 import lombok.Setter;
-import persistence.CategoriesDAO;
+import persistence.ProducersDAO;
 import persistence.MoviesDAO;
 
 import javax.annotation.PostConstruct;
@@ -16,18 +16,18 @@ import java.io.Serializable;
 import java.util.Map;
 
 @Model
-public class MoviesInCategory implements Serializable {
+public class MoviesOfProducer implements Serializable {
 
 
     @Inject
-    private CategoriesDAO categoriesDAO;
+    private ProducersDAO producersDAO;
 
     @Inject
     private MoviesDAO moviesDAO;
 
     @Getter
     @Setter
-    private Category category;
+    private Producer producer;
 
     @Getter
     @Setter
@@ -37,14 +37,14 @@ public class MoviesInCategory implements Serializable {
     public void init(){
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        Integer categoryId = Integer.parseInt(requestParameters.get("categoryId"));
-        this.category = categoriesDAO.findOne(categoryId);
+        Integer categoryId = Integer.parseInt(requestParameters.get("producerId"));
+        this.producer = producersDAO.findOne(categoryId);
     }
 
     @Transactional
     public String createMovie(){
-        movieToCreate.setCategory(this.category);
+        movieToCreate.setProducer(this.producer);
         moviesDAO.persist(movieToCreate);
-        return "/movies.xhtml?faces-redirect=true&categoryId=" + this.category.getId();
+        return "/movies.xhtml?faces-redirect=true&producerId=" + this.producer.getId();
     }
 }

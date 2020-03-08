@@ -9,15 +9,15 @@
     <title>Title</title>
 </h:head>
 <h:body>
-    <h2>Categories:</h2>
+    <h2>Producers:</h2>
     <ol>
-        <ui:repeat value="#{categories.allCategories}" var="category">
-            <li><h:link value="#{category.name}" outcome="movies?categoryId=#{category.id}" /> </li>
+        <ui:repeat value="#{producers.allProducers}" var="producer">
+            <li><h:link value="#{producer.name}" outcome="movies?producerId=#{producer.id}" /> </li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{categories.categoryToCreate.name}" required="true" />
-        <h:commandButton value = "Add a new category" action="#{categories.createCategory}" />
+        <h:inputText value="#{producers.producerToCreate.name}" required="true" />
+        <h:commandButton value = "Add a new producer" action="#{producers.createProducer}" />
     </h:form>
 </h:body>
 </html>
