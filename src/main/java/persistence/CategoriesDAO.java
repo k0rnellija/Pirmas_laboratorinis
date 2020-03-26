@@ -1,15 +1,14 @@
 package persistence;
 
 import entities.Category;
-import entities.Producer;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.SynchronizationType;
 import java.util.List;
 
-@Stateless
+@ApplicationScoped
 public class CategoriesDAO {
     @PersistenceContext (synchronization = SynchronizationType.SYNCHRONIZED)
 

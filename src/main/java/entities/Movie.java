@@ -1,7 +1,9 @@
 package entities;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.johnzon.mapper.JohnzonIgnore;
 
 import javax.persistence.*;
@@ -13,11 +15,14 @@ import javax.validation.constraints.Size;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Movie.findAll", query = "select a from Movie as a")
+        @NamedQuery(name = "Movie.findAll", query = "select a from Movie as a"),
+        @NamedQuery(name = "Movie.findById", query = "select a from Movie as a where a.id = :id"),
+        @NamedQuery(name = "Movie.findByName", query = "select a from Movie as a where a.name = :name")
 })
 @Table(name = "MOVIE")
 @Getter
 @Setter
+@ToString(of = {"id", "name", "year", "duration"})
 public class Movie implements Serializable {
 
     @Id
@@ -32,16 +37,19 @@ public class Movie implements Serializable {
     @Column(name = "YEAR")
     private String year;
 
+    @Size(max = 4)
+    @Column(name = "DURATION")
+    private String duration;
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCER_ID")
+    @JoinColumn(name = "PRODUCER_ID", referencedColumnName = "ID")
     private Producer producer;
 
     @JoinTable(name = "MOVIE_CATEGORY", joinColumns = {
             @JoinColumn(name = "MOVIE_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
             @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "ID")})
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JohnzonIgnore
     private List<Category> categoryList = new ArrayList<>();
 

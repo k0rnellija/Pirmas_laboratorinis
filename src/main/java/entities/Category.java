@@ -1,7 +1,9 @@
 package entities;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -11,12 +13,15 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Category.findAll", query = "select c from Category as c"),
-        @NamedQuery(name = "Category.findById", query = "select c from Category as c WHERE c.id = :id")
+        @NamedQuery(name = "Category.findById", query = "select c from Category as c WHERE c.id = :id"),
+        @NamedQuery(name = "Category.findByName", query = "select c from Category as c WHERE c.name = :name")
 })
 
 @Table(name = "CATEGORY")
 @Getter
 @Setter
+@EqualsAndHashCode(of = "name")
+@ToString(of = {"id", "name"})
 public class Category {
     public Category() {
 

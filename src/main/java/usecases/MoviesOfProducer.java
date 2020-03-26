@@ -37,8 +37,8 @@ public class MoviesOfProducer implements Serializable {
     public void init(){
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        Integer categoryId = Integer.parseInt(requestParameters.get("producerId"));
-        this.producer = producersDAO.findOne(categoryId);
+        Integer producerId = Integer.parseInt(requestParameters.get("producerId"));
+        this.producer = producersDAO.findOne(producerId);
     }
 
     @Transactional

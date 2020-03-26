@@ -30,12 +30,16 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <!-- Java EE 7 API -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Java EE 7 JavaDoc -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -43,22 +47,53 @@
             <classifier>javadoc</classifier>
             <scope>provided</scope>
         </dependency>
+
+        <!-- http://www.h2database.com -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.195</version>
         </dependency>
+
+        <!-- https://projectlombok.org/ -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.16</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Apache JSON implementation -->
         <dependency>
             <groupId>org.apache.johnzon</groupId>
             <artifactId>johnzon-mapper</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <!-- http://www.primefaces.org/showcase/ -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>7.0</version>
+        </dependency>
+
+        <!-- Simple Logging Facade for Java -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>

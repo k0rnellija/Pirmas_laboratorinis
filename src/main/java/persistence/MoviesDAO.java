@@ -14,6 +14,10 @@ public class MoviesDAO {
 
     public void create(Movie movie) { em.persist(movie);}
 
+    public List<Movie> getAllMovies() {
+       return em.createNamedQuery("Movie.findAll", Movie.class).getResultList();
+    }
+
     public void persist(Movie movie) {
         this.em.persist(movie);
     }

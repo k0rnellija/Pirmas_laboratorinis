@@ -9,6 +9,8 @@
       xsi:schemaLocation="http://primefaces.org/ui ">
 <h:head/>
 <h:body>
+
+
     <h2>Movies included in #{moviesOfProducer.producer.name} portfolio:</h2>
     <ol>
         <ui:repeat value="#{moviesOfProducer.producer.movies}" var="movie">
@@ -23,6 +25,8 @@
         <h:inputText value="#{moviesOfProducer.movieToCreate.name}" required="true" /><br/><br/>
         <h:outputLabel value="Year  "/>
         <h:inputText value="#{moviesOfProducer.movieToCreate.year}" required="true" /><br/><br/>
+        <h:outputLabel value="Duration  "/>
+        <h:inputText value="#{moviesOfProducer.movieToCreate.duration}" required="true" /><br/><br/>
 
         <h:commandButton value="Add" action="#{moviesOfProducer.createMovie}">
             <f:param name="producerId" value="#{moviesOfProducer.producer.id}" />
@@ -30,6 +34,6 @@
     </h:form>
 
     <h2>Go back to producers list</h2>
-    <h:commandButton value="All Producers" onclick="location.href='index.xhtml'"/>
+    <h:commandButton value="All Producers" onclick="location.href='use-case-dao-jpa.xhtml'"/>
 </h:body>
 </html>

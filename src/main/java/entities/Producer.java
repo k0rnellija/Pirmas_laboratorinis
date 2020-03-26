@@ -1,8 +1,10 @@
 package entities;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -13,13 +15,15 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Producer.findAll", query = "select p from Producer as p")
+        @NamedQuery(name = "Producer.findAll", query = "select p from Producer as p"),
+        @NamedQuery(name = "Producer.findById", query = "select p from Producer as p where p.id = :id"),
+        @NamedQuery(name = "Producer.findByName", query = "select p from Producer as p where p.name = :name")
 })
 
 @Table(name = "PRODUCER")
 @Getter
 @Setter
-
+@ToString(of = {"id", "name"})
 public class Producer {
     public Producer() {
 
@@ -27,6 +31,7 @@ public class Producer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
 
     @Size(max = 30)

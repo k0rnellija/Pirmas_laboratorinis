@@ -3,21 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <title>Title</title>
 </h:head>
 <h:body>
-    <h2>Producers:</h2>
-    <ol>
-        <ui:repeat value="#{producers.allProducers}" var="producer">
-            <li><h:link value="#{producer.name}" outcome="movies?producerId=#{producer.id}" /> </li>
-        </ui:repeat>
-    </ol>
-    <h:form>
-        <h:inputText value="#{producers.producerToCreate.name}" required="true" />
-        <h:commandButton value = "Add a new producer" action="#{producers.createProducer}" />
-    </h:form>
+    <h1>First assignment </h1>
+
+
+    <h2>Simple usecase (DAO with JPA)</h2>
+    <h:commandButton value="DAO JPA" onclick="location.href='use-case-dao-jpa.xhtml'"/>
+
+    <h2>Simple usecase (DAO with MyBatis)</h2>
+    <h:commandButton value="DAO MyBatis" onclick="location.href='use-case-dao-mybatis.xhtml'"/>
 </h:body>
 </html>
