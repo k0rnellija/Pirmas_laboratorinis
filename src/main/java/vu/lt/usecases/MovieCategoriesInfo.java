@@ -1,14 +1,13 @@
-package usecases;
+package vu.lt.usecases;
 
-import entities.Category;
-import entities.Movie;
-import entities.Producer;
+import vu.lt.entities.Category;
+import vu.lt.entities.Movie;
+import vu.lt.entities.Producer;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import persistence.CategoriesDAO;
-import persistence.MoviesDAO;
-import persistence.ProducersDAO;
+import vu.lt.persistence.CategoriesDAO;
+import vu.lt.persistence.MoviesDAO;
+import vu.lt.persistence.ProducersDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;

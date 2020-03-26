@@ -1,6 +1,6 @@
-package persistence;
+package vu.lt.persistence;
 
-import entities.Producer;
+import vu.lt.entities.Producer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

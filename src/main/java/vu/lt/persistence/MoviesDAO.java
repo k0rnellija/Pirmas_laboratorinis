@@ -1,6 +1,6 @@
-package persistence;
+package vu.lt.persistence;
 
-import entities.Movie;
+import vu.lt.entities.Movie;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

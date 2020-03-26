@@ -1,9 +1,9 @@
-package usecases;
+package vu.lt.usecases;
 
-import entities.Producer;
+import vu.lt.entities.Producer;
 import lombok.Getter;
 import lombok.Setter;
-import persistence.ProducersDAO;
+import vu.lt.persistence.ProducersDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;

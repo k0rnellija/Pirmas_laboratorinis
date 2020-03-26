@@ -11,10 +11,10 @@
                         password="as">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="persistence.mybatis.model" targetProject="MAVEN" />
+        <javaModelGenerator targetPackage="vu.lt.mybatis.model" targetProject="MAVEN" />
 
-        <sqlMapGenerator targetPackage="usecases.mybatis.xml" targetProject="MAVEN" />
-        <javaClientGenerator type="XMLMAPPER" targetPackage="mybatis.dao" targetProject="MAVEN" />
+        <sqlMapGenerator targetPackage="vu.lt.usecases.mybatis.xml" targetProject="MAVEN" />
+        <javaClientGenerator type="XMLMAPPER" targetPackage="vu.lt.mybatis.dao" targetProject="MAVEN" />
 
 
         <table schema="public" tableName="producer">
@@ -29,6 +29,6 @@
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <table schema="public" tableName="movie_category"></table>
+        <table schema="public" tableName="movie_category"/>
     </context>
 </generatorConfiguration>
