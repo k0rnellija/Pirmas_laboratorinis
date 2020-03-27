@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Title</title>
+</h:head>
+<h:body>
+    <h1>ALL MOVIES</h1>
+
+    <h:form>
+        <p:fieldset legend="All movies" toggleable="true" style="width: 50%;">
+            <p:dataTable value="#{movieCategoriesInfo.allMovies}" var="movie">
+                <p:column headerText="Movie">
+                    <h:outputText value="#{movie.name}"/>
+                </p:column>
+                <p:column headerText="Year">
+                    <h:outputText value="#{movie.year}"/>
+                </p:column>
+                <p:column headerText="Duration">
+                    <h:outputText value="#{movie.duration} min."/>
+                </p:column>
+                <p:column headerText="Category">
+                    <ui:repeat var="category" value="#{movie.categoryList}">
+                        <h:outputText value="#{category.name}"/>
+                    </ui:repeat>
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+        <p:messages globalOnly="true"/>
+    </h:form>
+
+    <h2>Producers (with JPA):</h2>
+    <ol>
+        <ui:repeat value="#{producers.allProducers}" var="producer">
+            <li><h:link value="#{producer.name}" outcome="movies?producerId=#{producer.id}"/></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{producers.producerToCreate.name}" required="true"/>
+        <h:commandButton value="Add a new producer" action="#{producers.createProducer}"/>
+    </h:form>
+    <h2>Go back to index page</h2>
+    <h:commandButton value="Back" onclick="location.href='index.xhtml'"/>
+</h:body>
+</html>

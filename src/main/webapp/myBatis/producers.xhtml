@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<body>
+    <h2>Producers:</h2>
+    <ol>
+        <ui:repeat value="#{producersMyBatis.allProducers}" var="producer">
+            <li><h:link value="#{producer.name}" outcome="movies?producerId=#{producer.id}" /></li>
+        </ui:repeat>
+    </ol>
+
+    <h:form>
+        <h:inputText value="#{producersMyBatis.producerToCreate.name}" required="true" />
+        <h:commandButton value="Add producer" action="#{producersMyBatis.createProducer}" />
+    </h:form> <br></br>
+    <h2>Go back to index page</h2>
+    <h:commandButton value="Back" onclick="location.href='../index.xhtml'"/>
+</body>
+</html>

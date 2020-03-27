@@ -26,7 +26,7 @@ public class MovieCategoriesInfo {
     private Movie movie = new Movie();
 
     @Getter
-    private Producer producer = new Producer();
+    private Producer producer;
 
     @Getter
     private List<Movie> allMovies;
@@ -48,11 +48,7 @@ public class MovieCategoriesInfo {
         movie.getCategoryList().add(category);
         category.getMovieList().add(movie);
         producer.getName();
-        //movie.setProducer(this.producer);
-        categoriesDAO.create(category);
-        moviesDAO.create(movie);
     }
-
     private void loadAllMovies() {
         allMovies = moviesDAO.getAllMovies();
     }

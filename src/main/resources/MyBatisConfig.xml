@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="vu.lt.entities.mybatis.model.Producer" alias="Producer"/>
-        <typeAlias type="vu.lt.entities.mybatis.model.Movie" alias="Movie"/>
-        <typeAlias type="vu.lt.entities.mybatis.model.Category" alias="Category"/>
-        <typeAlias type="vu.lt.entities.mybatis.model.MovieCategory" alias="MovieCategory"/>
+        <typeAlias type="vu.lt.mybatis.model.Producer" alias="Producer"/>
+        <typeAlias type="vu.lt.mybatis.model.Movie" alias="Movie"/>
+        <typeAlias type="vu.lt.mybatis.model.Category" alias="Category"/>
+        <typeAlias type="vu.lt.mybatis.model.MovieCategory" alias="MovieCategory"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -18,9 +18,9 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/ProducerMapper.xml"/>
-        <mapper resource="mybatis.xml/MovieMapper.xml"/>
-        <mapper resource="mybatis.xml/CategoryMapper.xml"/>
+        <mapper resource="mybatis/xml/ProducerMapper.xml"/>
+        <mapper resource="mybatis/xml/MovieMapper.xml"/>
+        <mapper resource="mybatis/xml/CategoryMapper.xml"/>
         <mapper resource="mybatis/xml/MovieCategoryMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,5 +1,7 @@
 package vu.lt.mybatis.model;
 
+import java.util.List;
+
 public class Movie {
     /**
      *
@@ -165,4 +167,7 @@ public class Movie {
     public void setProducerId(Integer producerId) {
         this.producerId = producerId;
     }
+
+    private Producer producer;
+    private List<Category> categories;
 }

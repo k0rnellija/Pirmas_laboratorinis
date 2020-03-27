@@ -31,7 +31,7 @@ public class Producers {
     @Transactional
     public String createProducer(){
         this.producersDAO.persist(producerToCreate);
-        return "success";
+        return "use-case-dao-jpa?faces-redirect=true";
     }
 
     private void loadAllProducers(){

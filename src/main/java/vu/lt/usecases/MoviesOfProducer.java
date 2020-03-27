@@ -1,9 +1,11 @@
 package vu.lt.usecases;
 
+import vu.lt.entities.Category;
 import vu.lt.entities.Producer;
 import vu.lt.entities.Movie;
 import lombok.Getter;
 import lombok.Setter;
+import vu.lt.persistence.CategoriesDAO;
 import vu.lt.persistence.ProducersDAO;
 import vu.lt.persistence.MoviesDAO;
 
@@ -24,6 +26,8 @@ public class MoviesOfProducer implements Serializable {
 
     @Inject
     private MoviesDAO moviesDAO;
+    @Inject
+    private CategoriesDAO categoriesDAO;
 
     @Getter
     @Setter
@@ -32,6 +36,9 @@ public class MoviesOfProducer implements Serializable {
     @Getter
     @Setter
     private Movie movieToCreate = new Movie();
+    @Getter
+    @Setter
+    private Category categoryToCreate = new Category();
 
     @PostConstruct
     public void init(){
@@ -42,9 +49,11 @@ public class MoviesOfProducer implements Serializable {
     }
 
     @Transactional
-    public String createMovie(){
+    public void createMovie(){
         movieToCreate.setProducer(this.producer);
+        movieToCreate.getCategoryList().add(categoryToCreate);
+        categoryToCreate.getMovieList().add(movieToCreate);
         moviesDAO.persist(movieToCreate);
-        return "/movies.xhtml?faces-redirect=true&producerId=" + this.producer.getId();
+        categoriesDAO.persist(categoryToCreate);
     }
 }

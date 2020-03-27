@@ -36,7 +36,7 @@ public class Producer {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "producer")
     private List<Movie> movies = new ArrayList<>();
 
     @Override

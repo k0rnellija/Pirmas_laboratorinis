@@ -1,37 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://primefaces.org/ui ">
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 <h:head/>
 <h:body>
+    <h2> Movies in portfolio of producer #{moviesOfProducer.producer.name} :</h2>
+    <ol>
 
-
-    <h2>Movies included in #{moviesOfProducer.producer.name} portfolio:</h2>
-
-    <h:form>
-        <p:fieldset legend="All movies" toggleable="true" style="width: 50%;">
-            <p:dataTable value="#{moviesOfProducer.producer.movies}" var="movie">
-                <p:column headerText="Movie">
-                    <h:outputText value="#{movie.name}"/>
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{movie.year}"/>
-                </p:column>
-                <p:column headerText="Duration">
-                    <h:outputText value="#{movie.duration} min."/>
-                </p:column>
-
-            </p:dataTable>
-        </p:fieldset>
-    </h:form>
-
-
-    <h2>Add a new movie to the list:</h2>
+        <h:form>
+            <p:fieldset legend="All movies" toggleable="true" style="width: 50%;">
+                <p:dataTable value="#{moviesOfProducer.producer.movies}" var="movie">
+                    <p:column headerText="Movie">
+                        <h:outputText value="#{movie.name}"/>
+                    </p:column>
+                    <p:column headerText="Year">
+                        <h:outputText value="#{movie.year}"/>
+                    </p:column>
+                    <p:column headerText="Duration">
+                        <h:outputText value="#{movie.duration} min."/>
+                    </p:column>
+                </p:dataTable>
+            </p:fieldset>
+        </h:form>
+    </ol>
     <h:form>
         <table>
             <tr>
@@ -56,12 +50,13 @@
                 </td>
             </tr>
         </table>
-        <h:commandButton value="Add" action="#{moviesOfProducer.createMovie}">
+
+        <h:commandButton value="Add movie" action="#{moviesOfProducer.createMovie}">
             <f:param name="producerId" value="#{moviesOfProducer.producer.id}" />
         </h:commandButton>
-    </h:form>
-
-    <h2>Go back to main movies list page</h2>
-    <h:commandButton value="Movies" onclick="location.href='use-case-dao.xhtml'"/>
+    </h:form><br/>
+    <h2>Go back to movies list page</h2>
+<!--    <h:commandButton value="Movies" onclick="location.href='../index.xhtml'"/>-->
+    <h:link outcome="/myBatis/producers" value="Back to producers page" />
 </h:body>
 </html>

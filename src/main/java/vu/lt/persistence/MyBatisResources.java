@@ -1,6 +1,5 @@
 package vu.lt.persistence;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -10,7 +9,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import java.io.IOException;
 
-@Slf4j
 @ApplicationScoped
 public class MyBatisResources {
 
@@ -23,7 +21,6 @@ public class MyBatisResources {
                     Resources.getResourceAsStream("MyBatisConfig.xml")
             );
         } catch (IOException e) {
-            log.error("MyBatisResources.produceSqlSessionFactory(): ", e);
             throw new RuntimeException("MyBatisResources.produceSqlSessionFactory(): ", e);
         }
     }
