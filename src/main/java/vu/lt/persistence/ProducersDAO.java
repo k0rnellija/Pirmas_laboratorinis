@@ -16,10 +16,6 @@ public class ProducersDAO {
         return em.createNamedQuery("Producer.findAll", Producer.class).getResultList();
     }
 
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
-
     public void persist(Producer producer) {
         this.em.persist(producer);
     }

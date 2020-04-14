@@ -3,7 +3,6 @@ package vu.lt.entities;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.apache.johnzon.mapper.JohnzonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -49,7 +48,6 @@ public class Movie implements Serializable {
             @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "ID")})
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JohnzonIgnore
     private List<Category> categoryList = new ArrayList<>();
 
 

@@ -14,8 +14,6 @@ public class CategoriesDAO {
 
     private EntityManager em;
 
-    public void create (Category category) {em.persist(category);}
-
     public void persist(Category category) {
         this.em.persist(category);
     }
