@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 @Model
@@ -40,6 +41,10 @@ public class MoviesOfProducer implements Serializable {
     @Setter
     private Category categoryToCreate = new Category();
 
+    @Getter
+    @Setter
+    private String input;
+
     @PostConstruct
     public void init(){
         Map<String, String> requestParameters =
@@ -48,12 +53,20 @@ public class MoviesOfProducer implements Serializable {
         this.producer = producersDAO.findOne(producerId);
     }
 
+
     @Transactional
     public void createMovie(){
         movieToCreate.setProducer(this.producer);
-        movieToCreate.getCategoryList().add(categoryToCreate);
+
         categoryToCreate.getMovieList().add(movieToCreate);
+
+        String[] a = input.split(",");
+        for(int i=0; i<a.length; i++){
+            categoryToCreate = new Category();
+            categoryToCreate.setName(a[i]);
+            categoriesDAO.persist(categoryToCreate);
+            movieToCreate.getCategoryList().add(categoryToCreate);
+        }
         moviesDAO.persist(movieToCreate);
-        categoriesDAO.persist(categoryToCreate);
     }
 }

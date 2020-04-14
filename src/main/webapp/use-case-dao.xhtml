@@ -25,7 +25,7 @@
                 </p:column>
                 <p:column headerText="Category">
                     <ui:repeat var="category" value="#{movie.categoryList}">
-                        <h:outputText value="#{category.name}"/>
+                        <h:outputText value="#{category.name.concat(' ')}"/>
                     </ui:repeat>
                 </p:column>
             </p:dataTable>
