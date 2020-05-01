@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://primefaces.org/ui ">
+<h:head>
+    <title>Edit Movie with Optimistic Locking</title>
+</h:head>
+
+<h:body>
+    <h2>#{updateMovieInfo.movie.name}</h2>
+    <h:form>
+        <h:outputText value="movie rating: "/>
+        <h:inputText a:placeholder="enter new value" value="#{updateMovieInfo.movie.rating}" required="true" />
+        <h:commandButton value="update" action="#{updateMovieInfo.updateMovieRating()}">
+            <f:param name="movieId" value="#{updateMovieInfo.movie.id}" />
+        </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h2>Go back to main movies list page</h2>
+    <h:commandButton value="Movies" onclick="location.href='use-case-dao.xhtml'"/>
+</h:body>
+</html>

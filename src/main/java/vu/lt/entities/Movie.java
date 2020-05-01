@@ -39,6 +39,9 @@ public class Movie implements Serializable {
     @Column(name = "DURATION")
     private String duration;
 
+    @Column(name="RATING")
+    private Integer rating;
+
     @ManyToOne
     @JoinColumn(name = "PRODUCER_ID", referencedColumnName = "ID")
     private Producer producer;
@@ -50,6 +53,9 @@ public class Movie implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Category> categoryList = new ArrayList<>();
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 
     public Movie() {
 

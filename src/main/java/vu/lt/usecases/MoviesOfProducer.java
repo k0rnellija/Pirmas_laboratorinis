@@ -5,6 +5,7 @@ import vu.lt.entities.Producer;
 import vu.lt.entities.Movie;
 import lombok.Getter;
 import lombok.Setter;
+import vu.lt.interceptors.LoggedInvocation;
 import vu.lt.persistence.CategoriesDAO;
 import vu.lt.persistence.ProducersDAO;
 import vu.lt.persistence.MoviesDAO;
@@ -55,6 +56,7 @@ public class MoviesOfProducer implements Serializable {
 
 
     @Transactional
+    @LoggedInvocation
     public void createMovie(){
         movieToCreate.setProducer(this.producer);
 

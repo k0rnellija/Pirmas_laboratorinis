@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>jetbrains</groupId>
+    <groupId>lt.mif.vu</groupId>
     <artifactId>pirmas_laboratorinis</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -71,13 +71,13 @@
             <version>1.0.0</version>
         </dependency>
 
-        <!-- http://www.primefaces.org/showcase/ -->
+       <!--http://www.primefaces.org/showcase/-->
+
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>7.0</version>
+            <version>6.2</version>
         </dependency>
-
         <!-- Simple Logging Facade for Java -->
         <dependency>
             <groupId>org.slf4j</groupId>

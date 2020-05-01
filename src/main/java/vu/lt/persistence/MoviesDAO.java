@@ -10,8 +10,6 @@ import java.util.List;
 
 @ApplicationScoped
 public class MoviesDAO {
-    @PersistenceContext
-
     @Inject
     private EntityManager em;
 
@@ -21,5 +19,14 @@ public class MoviesDAO {
 
     public void persist(Movie movie) {
         this.em.persist(movie);
+    }
+
+    public Movie findOne(Integer id){
+        return em.find(Movie.class, id);
+    }
+
+    public void updateAndFlush(Movie movie){
+        em.merge(movie);
+        em.flush();
     }
 }
