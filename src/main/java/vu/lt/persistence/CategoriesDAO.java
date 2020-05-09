@@ -14,13 +14,10 @@ public class CategoriesDAO {
 
     private EntityManager em;
 
-    public void persist(Category category) {
-        this.em.persist(category);
-    }
-
     public List<Category> getAllCategories() {return em.createNamedQuery("Category.findAll", Category.class).getResultList();}
 
     public Category findById(Integer id) {
         return em.find(Category.class, id);
     }
+
 }

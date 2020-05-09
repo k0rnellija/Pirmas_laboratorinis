@@ -3,12 +3,12 @@ package vu.lt.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import vu.lt.entities.Movie;
-import vu.lt.interceptors.LoggedInvocation;
 import vu.lt.persistence.MoviesDAO;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
+
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
@@ -20,7 +20,8 @@ import java.util.Map;
 @Named
 @Getter @Setter
 public class UpdateMovieInfo implements Serializable {
-    private Movie movie;
+    private Movie selectedMovie;
+    private Movie conflictingMovie = null;
 
     @Inject
     private MoviesDAO moviesDAO;
@@ -31,17 +32,26 @@ public class UpdateMovieInfo implements Serializable {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer movieId = Integer.parseInt(requestParameters.get("movieId"));
-        this.movie = moviesDAO.findOne(movieId);
+        this.selectedMovie = moviesDAO.findOne(movieId);
     }
 
     @Transactional
-    @LoggedInvocation
-    public String updateMovieRating() {
+    public String updateMovie() {
         try {
-            moviesDAO.updateAndFlush(this.movie);
+            missMatchCheck();
+            moviesDAO.updateAndFlush(this.selectedMovie);
         } catch (OptimisticLockException e) {
-            System.out.println("exception occured: " + e);
+            return "movieInfo.xhtml?faces-redirect=true&movieId=" + this.selectedMovie.getId() + "&error=optimistic-lock-exception";
         }
-        return "movies.xhtml?producerId=" + this.movie.getProducer().getId()+ "&faces-redirect=true";
+        return "movies.xhtml?producerId=" + this.selectedMovie.getProducer().getId()+ "&faces-redirect=true";
+    }
+
+    @Transactional
+    public void missMatchCheck() throws OptimisticLockException {
+        conflictingMovie = moviesDAO.findOne(this.selectedMovie.getId());
+
+        if(this.selectedMovie.getVersion() != conflictingMovie.getVersion()){
+            throw new OptimisticLockException();
+        }
     }
 }

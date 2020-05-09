@@ -12,14 +12,27 @@
 </h:head>
 
 <h:body>
-    <h2>#{updateMovieInfo.movie.name}</h2>
+    <h2>#{updateMovieInfo.selectedMovie.name}</h2>
     <h:form>
         <h:outputText value="movie rating: "/>
-        <h:inputText a:placeholder="enter new value" value="#{updateMovieInfo.movie.rating}" required="true" />
-        <h:commandButton value="update" action="#{updateMovieInfo.updateMovieRating()}">
-            <f:param name="movieId" value="#{updateMovieInfo.movie.id}" />
+        <h:inputText a:placeholder="enter new value" value="#{updateMovieInfo.selectedMovie.rating}" required="true" />
+        <h:commandButton value="update" action="#{updateMovieInfo.updateMovie()}">
+            <f:param name="movieId" value="#{updateMovieInfo.selectedMovie.id}" />
         </h:commandButton>
-        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+        <br/>
+        <h:outputText value="Value was already modified by other user. If you want to override it - click [Update] again"
+                      rendered="#{param['error'] == 'optimistic-lock-exception'}"
+                      style="color: red"
+        />
+    </h:form>
+    <br/>
+    <h:form>
+        <h:outputText value="#{generateMovieRating.movieRatingGeneratorStatus}" />
+        <h:commandButton value="Generate movie rating?"
+                         disabled="#{generateMovieRating.movieRatingGeneratorRunning}"
+                         action="#{generateMovieRating.generateNewMovieRating()}">
+            <f:param name="movieId" value="#{updateMovieInfo.selectedMovie.id}" />
+        </h:commandButton>
     </h:form>
     <h2>Go back to main movies list page</h2>
     <h:commandButton value="Movies" onclick="location.href='use-case-dao.xhtml'"/>

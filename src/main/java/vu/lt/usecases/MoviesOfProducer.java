@@ -5,7 +5,6 @@ import vu.lt.entities.Producer;
 import vu.lt.entities.Movie;
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.interceptors.LoggedInvocation;
 import vu.lt.persistence.CategoriesDAO;
 import vu.lt.persistence.ProducersDAO;
 import vu.lt.persistence.MoviesDAO;
@@ -16,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,37 +38,28 @@ public class MoviesOfProducer implements Serializable {
     @Getter
     @Setter
     private Movie movieToCreate = new Movie();
-    @Getter
-    @Setter
-    private Category categoryToCreate = new Category();
 
-    @Getter
-    @Setter
-    private String input;
+    @Getter @Setter private List<Category> allCategories;
+    @Getter @Setter private List<Category> selectedCategories = new ArrayList<>();
+    @Getter @Setter private List<Integer> selectedCategoriesIds;
 
     @PostConstruct
     public void init(){
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer producerId = Integer.parseInt(requestParameters.get("producerId"));
+        allCategories = categoriesDAO.getAllCategories();
         this.producer = producersDAO.findOne(producerId);
     }
 
-
     @Transactional
-    @LoggedInvocation
     public void createMovie(){
         movieToCreate.setProducer(this.producer);
-
-        categoryToCreate.getMovieList().add(movieToCreate);
-
-        String[] a = input.split(",");
-        for(int i=0; i<a.length; i++){
-            categoryToCreate = new Category();
-            categoryToCreate.setName(a[i]);
-            categoriesDAO.persist(categoryToCreate);
-            movieToCreate.getCategoryList().add(categoryToCreate);
+        for(int i=0; i<selectedCategoriesIds.size(); i++){
+            Category category = categoriesDAO.findById(selectedCategoriesIds.get(i));
+            selectedCategories.add(category);
         }
+        movieToCreate.setCategoryList(selectedCategories);
         moviesDAO.persist(movieToCreate);
     }
 }

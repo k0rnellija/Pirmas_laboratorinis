@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="http://java.sun.com/jsf/facelets"
       xsi:schemaLocation="http://primefaces.org/ui ">
 <h:head/>
 <h:body>
@@ -26,6 +26,9 @@
                 </p:column>
                 <p:column headerText="Rating">
                     <h:outputText value="#{movie.rating}" />
+                </p:column>
+                <p:column headerText="Version">
+                    <h:outputText value="#{movie.version}" />
                 </p:column>
                 <p:column headerText="Actions">
                     <h:link value="Edit" outcome="movieInfo?movieId=#{movie.id}"/>
@@ -58,9 +61,14 @@
                         <p:inputText id="rating" value="#{moviesOfProducer.movieToCreate.rating}"/>
                         <p:message for="rating"/>
 
-                        <p:outputLabel for="category" value="Category"/>
-                        <p:inputText id="category" value="#{moviesOfProducer.input}"/>
-                        <p:message for="category"/>
+                        <p:selectManyMenu id="categories" value="#{moviesOfProducer.selectedCategoriesIds}"
+                                              label="Select Categroies:" updateLabel="true"
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                            <f:attribute name="collectionType" value="java.util.ArrayList" /> <!-- Kitaip JSF bando kurti naują Hibernate PersistentBag ir būna bėdos... -->
+                            <f:selectItems value="#{moviesOfProducer.allCategories}" var="category"
+                                           itemLabel="#{category.name}" itemValue="#{category.id}" />
+                        </p:selectManyMenu>
+
                     </h:panelGrid>
                 </td>
             </tr>

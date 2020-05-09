@@ -22,5 +22,6 @@
         removeAbandonedTimeout = 600
         logAbandoned = true
         jmxEnabled = true
+        openejb.datasource.pool = true
     </Resource>
 </tomee>

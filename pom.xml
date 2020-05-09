@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.195</version>
+            <version>1.4.199</version>
         </dependency>
 
         <!-- https://projectlombok.org/ -->
@@ -71,7 +71,7 @@
             <version>1.0.0</version>
         </dependency>
 
-       <!--http://www.primefaces.org/showcase/-->
+        <!--http://www.primefaces.org/showcase/-->
 
         <dependency>
             <groupId>org.primefaces</groupId>
@@ -134,7 +134,7 @@
                         <dependency>
                             <groupId>com.h2database</groupId>
                             <artifactId>h2</artifactId>
-                            <version>1.4.195</version>
+                            <version>1.4.199</version>
                         </dependency>
                     </dependencies>
                 </plugin>
