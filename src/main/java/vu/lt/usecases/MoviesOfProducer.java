@@ -55,6 +55,7 @@ public class MoviesOfProducer implements Serializable {
 
     @Transactional
     @LoggedInvocation
+    
     public void createMovie(){
         movieToCreate.setProducer(this.producer);
         for(int i=0; i<selectedCategoriesIds.size(); i++){

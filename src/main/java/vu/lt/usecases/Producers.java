@@ -1,5 +1,6 @@
 package vu.lt.usecases;
 
+import vu.lt.decorators.Greeting;
 import vu.lt.entities.Producer;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,9 @@ public class Producers {
     @Inject
     private ProducersDAO producersDAO;
 
+    @Inject
+    private Greeting greeting;
+
     @Getter @Setter
     private Producer producerToCreate = new Producer();
 
@@ -31,6 +35,7 @@ public class Producers {
     @Transactional
     public String createProducer(){
         this.producersDAO.persist(producerToCreate);
+        System.out.println(greeting.greet(producerToCreate.getName()));
         return "use-case-dao?faces-redirect=true";
     }
 

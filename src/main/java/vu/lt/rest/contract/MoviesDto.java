@@ -2,22 +2,22 @@ package vu.lt.rest.contract;
 
 import lombok.Getter;
 import lombok.Setter;
-import vu.lt.entities.Category;
 
 import java.util.List;
 
 @Getter @Setter
 public class MoviesDto {
 
-    private String Name;
+    private String name;
 
-    private String Year;
+    private String year;
 
-    private String Duration;
+    private String duration;
 
-    private Integer Rating;
+    private Integer rating;
 
-    private String ProducerName;
+    private String producerName;
 
-    private List<Category> Categories;
+    private List<String> categoryNames;
+
 }

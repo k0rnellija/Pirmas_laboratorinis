@@ -23,4 +23,9 @@ public class ProducersDAO {
     public Producer findOne(Integer id) {
         return em.find(Producer.class, id);
     }
+
+    public void updateAndFlush(Producer producer) {
+        em.merge(producer);
+        em.flush();
+    }
 }
