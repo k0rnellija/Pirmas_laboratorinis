@@ -1,5 +1,6 @@
 package vu.lt.usecases;
 
+import vu.lt.Interceptors.LoggedInvocation;
 import vu.lt.services.MovieRatingGenerator;
 
 import javax.enterprise.context.SessionScoped;
@@ -20,6 +21,7 @@ public class GenerateMovieRating implements Serializable {
 
     private Future<Integer> movieRatingGeneratorTask = null;
 
+    @LoggedInvocation
     public String generateNewMovieRating() {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();

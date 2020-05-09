@@ -2,6 +2,7 @@ package vu.lt.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
+import vu.lt.Interceptors.LoggedInvocation;
 import vu.lt.entities.Movie;
 import vu.lt.persistence.MoviesDAO;
 
@@ -36,6 +37,7 @@ public class UpdateMovieInfo implements Serializable {
     }
 
     @Transactional
+    @LoggedInvocation
     public String updateMovie() {
         try {
             missMatchCheck();

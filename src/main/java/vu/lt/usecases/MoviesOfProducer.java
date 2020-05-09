@@ -1,5 +1,6 @@
 package vu.lt.usecases;
 
+import vu.lt.Interceptors.LoggedInvocation;
 import vu.lt.entities.Category;
 import vu.lt.entities.Producer;
 import vu.lt.entities.Movie;
@@ -53,6 +54,7 @@ public class MoviesOfProducer implements Serializable {
     }
 
     @Transactional
+    @LoggedInvocation
     public void createMovie(){
         movieToCreate.setProducer(this.producer);
         for(int i=0; i<selectedCategoriesIds.size(); i++){
