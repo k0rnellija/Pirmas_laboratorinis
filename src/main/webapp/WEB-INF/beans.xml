@@ -10,7 +10,11 @@
         <class>vu.lt.Interceptors.MethodLogger</class>
     </interceptors>
 
-    <!--<decorators>
+    <decorators>
         <class>vu.lt.decorators.MyDecorator</class>
-    </decorators>-->
+    </decorators>
+
+    <alternatives>
+        <class>vu.lt.services.MovieRatingGeneratorFaster</class>
+    </alternatives>
 </beans>

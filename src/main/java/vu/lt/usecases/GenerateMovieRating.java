@@ -2,6 +2,7 @@ package vu.lt.usecases;
 
 import vu.lt.Interceptors.LoggedInvocation;
 import vu.lt.services.MovieRatingGenerator;
+import vu.lt.services.NumberGenerator;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -19,13 +20,16 @@ public class GenerateMovieRating implements Serializable {
     @Inject
     MovieRatingGenerator movieRatingGenerator;
 
+    @Inject
+    NumberGenerator numberGenerator;
+
     private Future<Integer> movieRatingGeneratorTask = null;
 
     @LoggedInvocation
     public String generateNewMovieRating() {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        movieRatingGeneratorTask = movieRatingGenerator.generateRating();
+        movieRatingGeneratorTask = numberGenerator.generateRating();
         return "/movieInfo.xhtml?faces-redirect=true&movieId=" + requestParameters.get("movieId");
     }
 
