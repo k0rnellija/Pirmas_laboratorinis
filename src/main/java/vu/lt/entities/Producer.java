@@ -22,7 +22,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString(of = {"id", "name"})
-public class Producer {
+public class Producer{
     public Producer() {
 
     }
@@ -51,6 +51,5 @@ public class Producer {
     public int hashCode() {
         return Objects.hash(name);
     }
-
 
 }

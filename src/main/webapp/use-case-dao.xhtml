@@ -39,6 +39,7 @@
             <li><h:link value="#{producer.name}" outcome="movies?producerId=#{producer.id}"/></li>
         </ui:repeat>
     </ol>
+
     <h:form>
         <h:inputText value="#{producers.producerToCreate.name}" required="true"/>
         <h:commandButton value="Add a new producer" action="#{producers.createProducer}"/>

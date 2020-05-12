@@ -1,7 +1,6 @@
 package vu.lt.usecases;
 
 import vu.lt.Interceptors.LoggedInvocation;
-import vu.lt.services.MovieRatingGenerator;
 import vu.lt.services.NumberGenerator;
 
 import javax.enterprise.context.SessionScoped;
@@ -16,9 +15,6 @@ import java.util.concurrent.Future;
 @Named
 @SessionScoped
 public class GenerateMovieRating implements Serializable {
-
-    @Inject
-    MovieRatingGenerator movieRatingGenerator;
 
     @Inject
     NumberGenerator numberGenerator;
